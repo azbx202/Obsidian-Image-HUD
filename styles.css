@@ -1,0 +1,121 @@
+/* Image HUD 样式 */
+
+.image-hud-container {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    padding: 2px 4px;
+    user-select: none;
+    z-index: 100;
+    
+    /* 悬浮定位 */
+    transform: translateY(-50%);
+    margin-left: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    /* 默认隐藏 */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    top:12px;
+}
+
+/* Show HUD when hovering the specific image link text OR the HUD itself */
+/* 
+   Structure: 
+   Controlled by JS event handlers adding .is-visible class
+*/
+
+.image-hud-container.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    /* Optional: subtle animation */
+    transform: translateY(-50%) translateX(0);
+}
+
+.image-hud-text {
+    font-size: 0.8em;
+    color: var(--text-muted);
+    margin-right: 4px;
+    padding-right: 4px;
+    border-right: 1px solid var(--background-modifier-border);
+    white-space: nowrap;
+}
+
+.image-hud-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+}
+
+.image-hud-btn:hover {
+    background-color: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.image-hud-btn.is-delete:hover {
+    color: var(--text-error);
+    background-color: transparent;
+}
+
+.image-hud-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Hover Preview */
+.image-hud-preview-popover {
+    position: absolute;
+    z-index: 1000;
+    background-color: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    pointer-events: none;
+    max-width: 300px;
+    max-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.image-hud-preview-popover img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 2px;
+}
+
+/* 模态框预览 */
+.image-hud-modal-preview {
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: var(--background-secondary);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.image-hud-modal-preview img {
+    max-height: 200px;
+    max-width: 100%;
+    object-fit: contain;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}

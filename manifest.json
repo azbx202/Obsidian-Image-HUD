@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-image-hud",
+	"name": "Image HUD",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Enhance image interaction in editor mode. Display image info and provide non-destructive image processing tools.",
+	"author": "User",
+	"authorUrl": "",
+	"isDesktopOnly": false
+}
